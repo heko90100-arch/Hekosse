@@ -1814,12 +1814,14 @@ local function createOrUpdateESP(plr)
 
         local billboard = Instance.new("BillboardGui")
         billboard.Name = "ESP"
-        billboard.Adornee = head                     -- ← crucial fix
+        billboard.Adornee = head
         billboard.Parent = head
-        billboard.Size = UDim2.new(0, 220, 0, 36)    -- slightly bigger so visible farther
+        billboard.Size = UDim2.new(0, 220, 0, 36)
         billboard.StudsOffset = Vector3.new(0, 3.2, 0)
         billboard.AlwaysOnTop = true
-        billboard.MaxDistance = 4000                 -- prevent disappearing too early
+
+        -- 🔥 INFINITE RANGE FIX
+        billboard.MaxDistance = math.huge               -- prevent disappearing too early
 
         local text = Instance.new("TextLabel")
         text.Size = UDim2.new(1, 0, 1, 0)
